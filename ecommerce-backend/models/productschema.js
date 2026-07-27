@@ -14,7 +14,7 @@ const productschema = new mongoose.Schema({
         require:true
     },
     productpicture:{
-        type:URL,
+        type:String,
         require:true
     },
     distributername:{
@@ -24,3 +24,6 @@ const productschema = new mongoose.Schema({
 
 
 },{timestamps:true})
+
+const PRODUCT = mongoose.model("PRODUCT" , productschema)
+export default PRODUCT
