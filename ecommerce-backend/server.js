@@ -9,10 +9,12 @@ const app = express();
 
 connectdb();
 
-app.use("/products",productroute)
+app.use(express.json())
+
+app.use("/product", productroute)
 
 const PORT = process.env.PORT
 
-app.listen(PORT , () => {
+app.listen(PORT, () => {
     console.log("server is live at port ", PORT)
 })
