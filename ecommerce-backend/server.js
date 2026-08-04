@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import { productroute } from "./routes/productsroute.js";
 import { connectdb } from "./config/db.js";
 import { authroute } from "./routes/authroute.js";
+import cookies from"cookie-parser"
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ const app = express();
 connectdb();
 
 app.use(express.json())
+app.use(cookies())
 
 app.use("/products", productroute)
 app.use("/auth" , authroute)
