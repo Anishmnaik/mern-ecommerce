@@ -1,9 +1,18 @@
 import React from 'react'
+import {Route,Routes} from "react-router"
+import LoginPage from './pages/LoginPage'
+import HomePage from './pages/HomePage'
+import RegisterPage from './pages/RegisterPage'
+
 
 const App = () => {
   return (
-    <div className='m-20'>
-      <button className='btn btn-secondary '>hello</button>
+    <div>
+      <Routes>
+        <Route path="/" element={<HomePage/>}  />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path='/register' element={<RegisterPage/>}/>
+      </Routes>
     </div>
   )
 }

@@ -34,12 +34,12 @@ export const UserLogin = async (req,res) => {
     try {
         const {login , password} = req.body
         const user = await AUTH.findOne({$or: [{username : login} ,{email  : login}]})
-        if(!user) return res.status(404).send("please register")
+        if(!user) return res.status(401).send("please register")
            const passmatch = await bcrypt.compare(password , user.password)
-        if(!passmatch) return res.status(404).send("incorrect username or password")
+        if(!passmatch) return res.status(401).send("incorrect username or password")
         const token = await jwt.sign(user.email , process.env.secret)
         res.cookie("token" , token )
-
+        console.log("successfull")
         res.status(200).send("login successfull")
         } catch (error) {
         console.error("error in userlogin controller : ", error)
