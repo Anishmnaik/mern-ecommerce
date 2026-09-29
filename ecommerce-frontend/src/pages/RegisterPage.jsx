@@ -13,16 +13,32 @@ const RegisterPage = () => {
   const [confpass, setconfpass] = useState("")
   const [phno, setphno] = useState("")
   const [email, setemail] = useState("")
-  const [terms ,setterms] = useState(false)
+  const [terms, setterms] = useState(false)
 
-  
+
 
   const auth = async () => {
-    if (!user || !pass || !confpass || !phno || !email ) {
-      toast.error("all fields are required")
+    if (!user ) {
+      toast.error("username is required")
       return;
     }
-    if(terms === false){
+    if (!pass) {
+      toast.error("password is required")
+      return;
+    }
+    if (!confpass) {
+      toast.error("conform password is required")
+      return;
+    }
+    if ( !phno ) {
+      toast.error("phone number is required ")
+      return;
+    }
+    if ( !email) {
+      toast.error("email is required")
+      return;
+    }
+    if (terms === false) {
       toast.error("please accept the terms and conditions")
       return
     }
@@ -219,7 +235,7 @@ const RegisterPage = () => {
               <input
                 type="text"
                 onChange={(e) => setuser(e.target.value)}
-                placeholder="Username"
+                placeholder="Choose a Username to identify your account"
                 className="grow bg-transparent text-white placeholder:text-white/40"
               />
             </label>
@@ -234,7 +250,7 @@ const RegisterPage = () => {
               <input
                 type="email"
                 onChange={(e) => setemail(e.target.value)}
-                placeholder="Email Address"
+                placeholder="Enter your Email Address for password recovery and notification"
                 className="grow bg-transparent text-white placeholder:text-white/40"
               />
             </label>
@@ -247,9 +263,9 @@ const RegisterPage = () => {
               </span>
 
               <input
-                type="number"
+                type="tel"
                 onChange={(e) => { setphno(e.target.value) }}
-                placeholder="Phone Number"
+                placeholder="Enter your Phone Number for communication"
                 className="grow bg-transparent text-white placeholder:text-white/40"
               />
             </label>
@@ -264,7 +280,7 @@ const RegisterPage = () => {
               <input
                 type={showpass ? "text" : "password"}
                 onChange={(e) => setpass(e.target.value)}
-                placeholder="Password"
+                placeholder="Create a Password to secure your account"
                 className="grow bg-transparent text-white placeholder:text-white/40"
               />
 
@@ -283,7 +299,7 @@ const RegisterPage = () => {
               <input
                 type={showpass ? "text" : "password"}
                 onChange={(e) => setconfpass(e.target.value)}
-                placeholder="Confirm Password"
+                placeholder="Re-enter your Password to verify it"
                 className="grow bg-transparent text-white placeholder:text-white/40"
               />
 
@@ -300,7 +316,7 @@ const RegisterPage = () => {
 
             <label className="label cursor-pointer justify-start gap-3">
 
-              <input onClick={()=>setterms(!terms)}
+              <input onClick={() => setterms(!terms)}
                 type="checkbox"
                 className="checkbox checkbox-primary"
               />

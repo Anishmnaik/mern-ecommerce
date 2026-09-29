@@ -17,6 +17,8 @@ app.use(cookies())
 
 app.use("/products", productroute)
 app.use("/auth" , authroute)
+app.use("/account" , accountroute)
+
 
 const PORT = process.env.PORT
 
